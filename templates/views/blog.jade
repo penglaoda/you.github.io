@@ -1,0 +1,83 @@
+extends ../layouts/default
+
+block css
+	link(href="/styles/blog.css", rel="stylesheet")
+mixin post(post)
+	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id })).row
+		.col-sm-10
+			h3: a(href='/blog/post/' + post.slug)= post.title
+			p.lead.text-muted Posted 
+				if post.publishedDate
+					| on #{post._.publishedDate.format('MMMM Do, YYYY')} 
+				if post.categories && post.categories.length
+					| in 
+					each cat, i in post.categories
+						a(href='/blog/' + cat.key)= cat.name
+						if i < post.categories.length - 1
+							| , 
+						else
+							|  
+				if post.author
+					| by #{post.author.name.first}		
+			p.text-muted!= post.content.brief
+			if post.content.extended
+				p.read-more: a(href='/blog/post/' + post.slug) 更多详情...
+		.col-sm-2
+			if post.image.exists
+				img(src=post._.image.fit(180,180)).img.pull-right.img-rounded
+	hr
+		
+
+block intro
+	.container
+		h2.bg-primary= data.category ? data.category.name : '所有分类'
+
+block content	
+	.container
+		.main-content
+			.row
+				.col-sm-8.col-md-9
+					if filters.category && !data.category
+						h3.text-muted Invalid Category.
+					else
+						if data.posts.results.length
+							if data.posts.totalPages > 1
+								h4.text-weight-normal Showing 
+									strong #{data.posts.first}
+									|  to 
+									strong #{data.posts.last}
+									|  of 
+									strong #{data.posts.total}
+									|  posts.
+							else
+								//h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
+								br
+							.blog
+								each post in data.posts.results
+									+post(post)
+							
+							if data.posts.totalPages > 1
+								ul.pagination
+									if data.posts.previous
+										li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
+									else
+										li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
+									each p, i in data.posts.pages
+										li(class=data.posts.currentPage == p ? 'active' : null)
+											a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+									if data.posts.next
+										li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
+									else
+										li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
+						else
+							if data.category
+								h3.text-muted There are no posts in the category #{data.category.name}.
+							else
+								h3.text-muted There are no posts yet.
+				
+				if data.categories.length
+					.col-sm-4.col-md-3
+						.list-group(style='margin-top: 70px;')
+							a(href='/blog', class=!data.category ? 'active' : false).list-group-item 所有分类
+							each cat in data.categories
+								a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name

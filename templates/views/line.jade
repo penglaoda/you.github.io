@@ -1,0 +1,107 @@
+extends ../layouts/default
+
+block css
+  link(href="/styles/line.css", rel="stylesheet")
+
+
+
+block content
+  
+  .container
+    .main-content
+      .single
+        .row
+          .col-sm-6.col-md-6
+            #myCarousel.carousel.slide
+              // 轮播（Carousel）指标
+              ol.carousel-indicators
+                li.active(data-target="#myCarousel", data-slide-to="0")
+                li(data-target="#myCarousel", data-slide-to="1")
+                li(data-target="#myCarousel", data-slide-to="2")
+              // 轮播（Carousel）项目
+              .carousel-inner
+                .item.active
+                  img(src="/images/slide/slide1.jpg", alt="First slide")
+                  .carousel-caption &#26631;&#39064; 1
+                .item
+                  img(src="/images/slide/slide2.jpg", alt="Second slide")
+                  .carousel-caption &#26631;&#39064; 2
+                .item
+                  img(src="/images/slide/slide3.jpg", alt="Third slide")
+                  .carousel-caption &#26631;&#39064; 3
+              // 轮播（Carousel）导航
+              a.carousel-control.left(href="#myCarousel", data-slide="prev") &#8249;
+              a.carousel-control.right(href="#myCarousel", data-slide="next") &#8250;
+          .col-sm-6.col-md-6
+            h4= data.line.title
+            p 住宿地点：#{data.line.stayType}
+            p 游玩天数：#{data.line.dayType}
+            p 市场原价：#{data.line.delprice}
+            p 优惠价格：#{data.line.price}
+
+            p.bg-primary 费用包含：
+            p 交通：当地空调旅游车
+            p 住宿：行程内所含的酒店住宿费用，酒店标准2人间
+            p 用餐：行程内所含餐食（3正餐1早餐）
+            p 门票：包含行程中所有景点门票（不含景区索道、观光电梯、观光小火车费用）
+            p 导游：当地优秀国证中文导游服务费用
+            p 保险：包含旅行社责任险、景区意外险
+
+        .row
+          .col-sm-6.col-md-6
+            p.bg-primary 套餐列表
+            !{data.line.pricelist}
+            p.bg-primary 费用列表中：
+            p “散客结伴”是指一个队伍中还有其他游人一起游玩（不超过16人）；
+            p “单独成团”是指一个导游只带自己的小团体游玩；
+            p “舒适型”“商务型”“豪华型”是指住宿标准等级不同；
+            p 如需4人以下（单独成团）请与客服人员联系：400-040-8517 (24小时咨询)    
+
+          .col-sm-6.col-md-6                         
+            h3.bg-primary 线路特色      
+            p !{data.line.feature}
+            h3.bg-primary 立即预定              
+            p 24小时客服：400-040-8517
+            p 办公室电话：0744-8200916
+            p 客服QQ（小彭）：409108107
+            p 客服QQ（小陈）：1401696688
+        h3 行程安排
+          table(height='400px',)
+            tr
+              td(width='10%',  bgcolor='#CCFFFF',  align='center')
+                p.text-danger 第一天:
+              td(bgcolor='#CCFFFF')
+                p.text-danger !{data.line.dayone.name}
+            tr
+              td(width='10%',  bgcolor='#99FFFF',  align='center')
+                p 上午行程：
+              td(bgcolor='#99FFFF')
+                !{data.line.dayone.am}
+            tr
+              td(width='10%',  bgcolor='#CCFFFF',  align='center')
+                p 下午行程：
+              td(bgcolor='#CCFFFF')
+                !{data.line.dayone.am}
+            tr
+              td(width='10%',  bgcolor='#99FFFF',  align='center')
+                p 含餐标准：
+              td(bgcolor='#99FFFF')
+                !{data.line.dayone.eat}
+            tr
+              td(width='10%',  bgcolor='#CCFFFF',  align='center')
+                p 住宿地点：
+              td(bgcolor='#CCFFFF')
+                !{data.line.dayone.stay}
+            tr
+              td(width='10%',  bgcolor='#99FFFF',  align='center')
+                p 特别提示：
+              td(bgcolor='#99FFFF')
+                !{data.line.dayone.hint}
+
+
+        
+      //  p 下午行程：!{data.line.dayone.pm}
+       // p 含餐标准: #{data.line.dayone.eat}
+       // p 住宿地点：#{data.line.dayone.stay}
+       // p 特别提示：#{data.line.dayone.hint}
+

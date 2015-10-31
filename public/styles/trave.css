@@ -1,0 +1,52 @@
+
+.linelist {
+  position: static;   
+  height: 130px;
+  //border: 1px solid black;
+  background-color: white;
+  //box-shadow: black 1px 1px 3px 0px;
+  margin-bottom: 1em;
+}   
+
+.img {  
+  //padding: 10px 10px 0px 10px;
+  margin: 0.5em;
+  //padding: 1em;
+}
+.txt {
+  padding-top: 33px;  
+}
+.txt p{
+  font-family: "微软雅黑";
+}
+.price {
+  padding-top: 1em;
+}
+.price a{  
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.price h3{  
+  font-family: "微软雅黑";
+  font-size: 18px;
+}
+.price h3 span{  
+  color:#DC143C;
+  font-size: 28px;
+}
+.price h4{  
+  font-family: "微软雅黑";
+  text-decoration:line-through ;
+  color:#DC143C;
+}
+.txtitle{
+  margin-top: 10px;
+}
+.txtitle h3{  
+  font-family: "微软雅黑";
+  font-size: 20px;
+}
+}
+.bor {
+  border: 1px solid black;
+}

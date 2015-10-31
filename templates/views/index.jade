@@ -1,0 +1,148 @@
+extends ../layouts/default
+
+mixin ig(imge,name)
+  .col-md-3.image-grid
+    img(src= '#{imge}')
+    .guide-caption
+      span
+      a(href="#")
+        span.twit  
+      a(href="#")
+        span.fb  
+      a(href="#")
+        span.gplus
+    p
+      a(href="#") #{name}
+
+block css
+  link(href="/styles/owl.carousel.css", rel="stylesheet")
+  
+
+block content
+    .container
+      #top-demo.topCarousel
+        .item.text-center
+          img(src='http://placehold.it/1920x400/21b2eb/058dcd')
+        .item.text-center
+          img(src='http://placehold.it/1920x400/058dcd/21b2eb')
+        .item.text-center
+          img(src='http://placehold.it/1920x400/21b2eb/058dcd')
+      .top-feature-head.text-center
+        h3 FEATURES
+        span
+        img(src="/images/star.png", alt="")
+        span
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        #features.features
+          .features-section
+            .col-md-6.feature-grid.text-center
+              i.f1.wow.bounceIn
+              h3 Easy to Customize
+              p
+                | Lorem lean startup ipsum product market fit customer development acquihire technical cofounder.
+            .col-md-6.feature-grid.text-center
+              i.f2.wow.bounceIn
+              h3 Travel Documents
+              p
+                | Lorem lean startup ipsum product market fit customer development acquihire technical cofounder.
+            .clearfix
+            .col-md-6.feature-grid.text-center
+              i.f3.wow.bounceIn
+              h3 Visa Support
+              p
+                | Lorem lean startup ipsum product market fit customer development acquihire technical cofounder.
+            .col-md-6.feature-grid.text-center
+              i.f4.wow.bounceIn
+              h3 Consultation
+              p
+                | Lorem lean startup ipsum product market fit customer development acquihire technical cofounder.
+      .top-tours-head.text-center
+        h3 TOP TOURS
+        span
+        img(src="/images/star.png", alt="")
+        span
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        .top-grids
+          .top-grid
+            a(href="#")
+              img(src="/images/top-grids/1.jpg", alt="")
+              .top-grid-info
+                h4 Vestibulum auctor
+                p
+                  | Morbi id felis porttitor tellus viverra pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices .
+          .top-grid
+            img(src="/images/top-grids/2.jpg", alt="")
+            .top-grid-info
+              h4 Vestibulum auctor
+              p
+                | Morbi id felis porttitor tellus viverra pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices .
+          .top-grid
+            img(src="/images/top-grids/3.jpg", alt="")
+            .top-grid-info
+              h4 Vestibulum auctor
+              p
+                | Morbi id felis porttitor tellus viverra pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices .
+          .top-grid
+            img(src="/images/top-grids/4.jpg", alt="")
+            .top-grid-info
+              h4 Vestibulum auctor
+              p
+                | Morbi id felis porttitor tellus viverra pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices .
+          .clearfix  
+
+      .tour-guides
+        .tour-guides-head.text-center
+          h3 TOUR GUIDES
+          span
+          img(src="/images/guide.png", alt="")
+          span
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      .owl-carousel#owl-demo
+        .item.text-center.guide-sliders
+          +ig('/images/guide/g1.jpg', 'name')
+          +ig('/images/guide/g2.jpg', 'name')
+          +ig('/images/guide/g3.jpg', 'name')
+          +ig('/images/guide/g4.jpg', 'name')
+        .item.text-center.guide-sliders
+          +ig('/images/guide/g5.jpg', 'name')
+          +ig('/images/guide/g6.jpg', 'name')
+          +ig('/images/guide/g7.jpg', 'name')
+          +ig('/images/guide/g8.jpg', 'name')
+        .item.text-center.guide-sliders
+          +ig('/images/guide/g9.jpg', 'name')
+          +ig('/images/guide/g10.jpg', 'name')
+          +ig('/images/guide/g11.jpg', 'name')
+          +ig('/images/guide/g12.jpg', 'name')
+
+        
+
+block js
+  script(src="/js/owl.carousel.js")
+  script.
+    $(document).ready(function() {
+    $("#owl-demo").owlCarousel({
+    items : 1,
+    lazyLoad : true,
+    autoPlay : true,
+    navigation : false,
+    navigationText :  false,
+    pagination : true,
+    });
+    });
+  script.
+    $(document).ready(function() {
+    $("#top-demo").owlCarousel({
+    items : 1,
+    lazyLoad : true,
+    autoPlay : true,
+    navigation : false,
+    navigationText :  false,
+    pagination : true,
+    });
+    });

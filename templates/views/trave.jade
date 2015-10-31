@@ -1,0 +1,27 @@
+extends ../layouts/default	
+
+block css
+  link(href="/styles/trave.css", rel="stylesheet")
+
+block content
+  .container
+    each line in data.lines.results
+      .linelist
+        .row
+          .col-sm-2
+            .img
+              img(src=line._.heroImage.limit(160,140))
+          .col-sm-7
+            .txtitle
+              h3= line.title
+            .txt
+              p 住宿地点：#{line.stayType}
+              p 游玩天数：#{line.dayType}
+          .col-sm-3
+            .price
+              h4 市场原价: ¥#{line.delprice}
+              h3 惊喜优惠价：
+                span ¥#{line.price}
+              a.btn.btn-info(href='/trave/line/' + line.slug) 查看详情
+
+//h2: a(href='/trave/line/' + line.slug)= line.title
